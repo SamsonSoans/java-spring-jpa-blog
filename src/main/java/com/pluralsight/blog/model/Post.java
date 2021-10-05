@@ -11,8 +11,18 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     private String title;
     private String lead;
+
     @Column(length=1000000)
     @Lob
     private String body;
@@ -20,6 +30,9 @@ public class Post {
 
     @Temporal(TemporalType.DATE)
     private Date date;
+
+    @ManyToOne
+    private Category category;
 
     public Post() {
         super();
